@@ -33,10 +33,7 @@ export default function Perfil(props) {
       </tr>
     )
   }
-  const newTo = { 
-    pathname: `/busca/${idS}`, 
-    idS: idS
-  }
+  const RotaDinamicaBusca = { pathname: `/busca/${idS}`, idS: idS }
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -59,7 +56,7 @@ export default function Perfil(props) {
             <Link to="/delete"><Button className="vermelho" variant="danger" type="excluir">Excluir</Button></Link>
             <Form className="FormDiretorP" inline onSubmit={handleSubmitSearch}>
               <Select className="FormDiretor" styles="neutral190" onChange={handleSelectChange} options={options} value={options.id}/>
-              <Link to={newTo}><Button type="submit" variant="outline-light">Search</Button></Link>
+              <Link to={RotaDinamicaBusca}><Button type="submit" variant="outline-light">Search</Button></Link>
             </Form>
           </Col>
         </Row>

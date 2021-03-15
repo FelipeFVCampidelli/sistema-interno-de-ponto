@@ -8,12 +8,13 @@ import Select from 'react-select';
 import {Link} from 'react-router-dom'
 import Navbar from "react-bootstrap/Navbar"
 import Nav from "react-bootstrap/Nav"
+
 import './diretor.css';
 
 export default function Perfil(props) {
   const id = props.id
   const idS = props.formHandlersBusca.idS
-  const {handleSelectChange, handleSubmitSearch, options} = props.formHandlersBusca
+  const {handleSelectChange, handleSubmitDeletePoints, options} = props.formHandlersBusca
   const [perfilD, setPerfilD] = useState({username: '', email: '', phone: '', users: [{username: '', points: {sum: '', times:['']}}]});
   useEffect(() => {
     Axios.get(`http://localhost:4001/user/diretor/${id}`).then(res => {setPerfilD(res.data)})
@@ -52,14 +53,14 @@ export default function Perfil(props) {
             <Link to="/cadastro"><Button className="verde" variant="success">Cadastrar</Button></Link>
             <Link to="/edit"><Button className="amarelo" variant="warning" type="editar">Editar</Button></Link>
             <Link to="/delete"><Button className="vermelho" variant="danger" type="excluir">Excluir</Button></Link>
-            <Form className="FormDiretorP" inline onSubmit={handleSubmitSearch}>
+            <Form className="FormDiretorP" inline>
               <Select className="FormDiretor" styles="neutral190" onChange={handleSelectChange} options={options} value={options.id}/>
               <Link to={RotaDinamicaBusca}><Button type="submit" variant="outline-light">Search</Button></Link>
             </Form>
           </Col>
         </Row>
       </Container>
-      <h1>Tabela de Pontos</h1>
+      <h2>Tabela de Pontos</h2>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -74,6 +75,9 @@ export default function Perfil(props) {
         </thead>
         <tbody>{perfilD.users.map(renderUser)}</tbody>
       </Table>
+      <Form onSubmit={handleSubmitDeletePoints}>
+        <Button className="deletePoints" variant="danger" type="excluir">Limpar pontos da semana</Button>
+      </Form>
     </div>
   );
 }

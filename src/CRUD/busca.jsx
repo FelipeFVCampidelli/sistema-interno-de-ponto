@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar"
 import Nav from "react-bootstrap/Nav"
 import {Link, useParams} from "react-router-dom"
 import Axios from 'axios'
-import './delete.css';
+import './busca.css';
 
 export default function Delete() {
   const {id} = useParams()
@@ -28,14 +28,14 @@ export default function Delete() {
       <Container fluid>
         <Row>
           <Col>
-            <h1>Página de Perfil</h1>
+            <h1>Página de Busca</h1>
             <p>Nome: {perfil.username} </p>
             <p>Email: {perfil.email} </p>
             <p>Telefone: {perfil.phone} </p>
           </Col>
         </Row>
       </Container>
-      <h1>Pontos Marcados</h1>
+      <h2>Pontos Marcados</h2>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>

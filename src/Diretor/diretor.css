@@ -26,3 +26,12 @@
   width: 50%;
   color: black;
 }
+.deletePoints{
+  width: 300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 38%;
+}
+h2 {
+  text-align: center;
+}

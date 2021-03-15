@@ -152,12 +152,15 @@ export default function App() {
     console.log(value)
     setIdS(value)
   }
-  // const [redirectBusca,setRedirectBusca] = useState()
-  // function handleSubmitSearch (event) {
-  //   event.preventDefault();
-  //   setRedirectBusca(<Redirect to={{pathname:"/busca:id", state: {id: idS} }}></Redirect>)
-  // }
-  const formHandlersBusca = {handleSelectChange, idS, options};
+  function handleSubmitDeletePoints(event){
+    event.preventDefault();
+    Axios.delete('http://localhost:4001/user')
+    .then((res) => {if(res.status === 200) {
+      alert("Pontos apagados")
+    }})
+    .catch(function (err){console.log(err.response);})
+  }
+  const formHandlersBusca = {handleSelectChange, handleSubmitDeletePoints, idS, options};
   return (
     <Router>
       <main>

@@ -35,7 +35,7 @@ export default function Perfil(props) {
           </Col>
         </Row>
       </Container>
-      <h1>Pontos Marcados</h1>
+      <h2>Pontos Marcados</h2>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>

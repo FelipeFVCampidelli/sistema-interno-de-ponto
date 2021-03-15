@@ -16,7 +16,7 @@ export default function Delete(props) {
         <Navbar.Brand><Link to="/">Home </Link></Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link><Link to="/login">Login</Link></Nav.Link>
-            <Nav.Link><Link to="/perfil">Diretor</Link></Nav.Link>
+            <Nav.Link><Link to="/diretor">Diretor</Link></Nav.Link>
             <Nav.Link><Link to="/ponto">Ponto</Link></Nav.Link>
           </Nav>
       </Navbar>
@@ -25,7 +25,7 @@ export default function Delete(props) {
           <Col>
             <h1>Página de Exclusão</h1>
             <Form inline onSubmit={handleSubmitDelete}>
-              <Select className="FormDelete" placeholder="Digite o nome do perfil a ser deletado" styles="neutral190" 
+              <Select id="Delete" className="FormDelete" placeholder="Digite o nome do perfil a ser deletado" styles="neutral190" 
                 onChange={handleSelectChangeDelete} options={optionsD} value={optionsD.id}/>
               <Button variant="danger" type="excluir">Excluir</Button>
             </Form>

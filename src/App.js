@@ -65,6 +65,11 @@ export default function App() {
     Axios.post("http://localhost:4001/user/cadastro", pacotinho)
     .then((res) => {if(res.status === 201){alert("Perfil cadastrado")}})
     .catch(function (err){console.log(err); alert("Erro no cadastro")})
+    document.getElementById('formBasicEmail').value='';
+    document.getElementById('formBasicPhone').value=''; 
+    document.getElementById('formBasicUsername').value=''; 
+    document.getElementById('formBasicPassword').value=''; 
+    document.getElementById('exampleForm.ControlSelect1').value=''; 
   }
   const formHandlersCadastro = {handleEmailCadastroChange, handlePhoneCadastroChange, handleNameCadastroChange,
                                 handlePasswordCadastroChange, handleRankCadastroChange, handleSubmitCadastro};
@@ -101,6 +106,10 @@ export default function App() {
       }else{alert("Erro na atualização do perfil");}
     })
     .catch(function (err){console.log(err);})
+    document.getElementById('formBasicEmail').value='';
+    document.getElementById('formBasicPhone').value=''; 
+    document.getElementById('formBasicUsername').value=''; 
+    document.getElementById('formBasicPassword').value=''; 
   }
   const formHandlersEdit = {handleEmailEditChange, handlePhoneEditChange, handleNameEditChange,
                             handlePasswordEditChange, handleSelectChangeEdit, handleSubmitEdit, optionsE};

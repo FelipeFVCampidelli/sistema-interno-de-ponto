@@ -1,8 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react"
 import { BrowserRouter as Router, Link, Route, Switch, Redirect } from "react-router-dom"
 import Axios from 'axios';
-import Navbar from "react-bootstrap/Navbar"
-import Nav from "react-bootstrap/Nav"
+
 
 import './App.css';
 import Perfil from './Perfil/perfil'
@@ -63,7 +62,7 @@ export default function App() {
   function handleRankCadastroChange(event) {setRankCadastro(event.target.value);}
   function handleSubmitCadastro(event){
     event.preventDefault();
-    const pacotinho = {username: nameCadastro, password: passwordCadastro, email: emailCadastro, celphoneNumber: phoneCadastro, role: rankCadastro}
+    const pacotinho = {username: nameCadastro, password: passwordCadastro, email: emailCadastro, phone: phoneCadastro, role: rankCadastro}
     Axios.post("http://localhost:4001/user/cadastro", pacotinho)
     .then((res) => {if(res.status === 201){alert("Perfil cadastrado")}})
     .catch(function (err){console.log(err); alert("Erro no cadastro")})
@@ -95,7 +94,7 @@ export default function App() {
   }
   function handleSubmitEdit(event){
     event.preventDefault();
-    const pacotinho = { id: idE, username: nameEdit, password: passwordEdit, email: emailEdit, celphoneNumber: phoneEdit}
+    const pacotinho = { id: idE, username: nameEdit, password: passwordEdit, email: emailEdit, phone: phoneEdit}
     Axios.put("http://localhost:4001/user", pacotinho)
     .then((res) => {
       if(res.status === 200){
@@ -124,7 +123,9 @@ export default function App() {
   function handleSubmitDelete(event){
     event.preventDefault();
     Axios.delete(`http://localhost:4001/user/${idD}`)
-    .then((res) => {if(res.status === 200) alert("Usuário " + res.data.username + " apagado")})
+    .then((res) => {if(res.status === 200) {
+      alert("Usuário " + res.data.username + " apagado")
+    }})
     .catch(function (err){console.log(err.response);})
   }
   const formHandlersDelete = {handleSelectChangeDelete, handleSubmitDelete, optionsD};
@@ -143,38 +144,26 @@ export default function App() {
     console.log(value)
     setIdS(value)
   }
+  const [redirectPerfil,setRedirectPerfil] = useState()
   function handleSubmitSearch (event) {
     event.preventDefault();
-    return(<Redirect to="/perfil"></Redirect>)
+    setRedirectPerfil(<Redirect to={{pathname:"/perfil", state: {id: idS} }}></Redirect>)
   }
-  const formHandlersBusca = {handleSelectChange, handleSubmitSearch, options};
+  const formHandlersBusca = {handleSelectChange, handleSubmitSearch, options, redirectPerfil};
 
   
   return (
     <Router>
       <main>
-        <Navbar bg="dark" variant="dark">
-          <Navbar.Brand><Link to="/">Home </Link></Navbar.Brand>
-            <Nav className="mr-auto">
-              <Nav.Link><Link to="/login">Login</Link></Nav.Link>
-              <Nav.Link><Link to="/perfil">Perfil</Link></Nav.Link>
-              <Nav.Link><Link to="/diretor">Diretor</Link></Nav.Link>  
-              <Nav.Link><Link to="/cadastro">Cadastro</Link></Nav.Link>
-              <Nav.Link><Link to="/edit">Edit</Link></Nav.Link>
-              <Nav.Link><Link to="/delete">Delete</Link></Nav.Link>
-              <Nav.Link><Link to="/ponto">Ponto</Link></Nav.Link>
-            </Nav>
-        </Navbar>
-        <br />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/diretor">{redirectToLogin()}<Diretor formHandlersBusca={formHandlersBusca} id={id}></Diretor></Route>
+          <Route path="/diretor">{redirectToHome()}<Diretor formHandlersBusca={formHandlersBusca} id={id}></Diretor></Route>
           <Route path="/login">{redirectToPerfil()}<Login formHandlers={formHandlers}></Login></Route>
           <Route path="/cadastro">{redirectToHome()}<Cadastro formHandlersCadastro={formHandlersCadastro}></Cadastro></Route>
           <Route path="/edit">{redirectToHome()}<Edit formHandlersEdit={formHandlersEdit}></Edit></Route>
           <Route path="/delete">{redirectToHome()}<Delete formHandlersDelete={formHandlersDelete}></Delete></Route>
           <Route path="/perfil">{redirectToLogin()}<Perfil id={id}></Perfil></Route>
-          <Route path="/ponto" component={Ponto} />
+          <Route path="/ponto"><Ponto id={id}/></Route>
           <Route render={() => <h1>404: página não encontrada</h1>} />
         </Switch>
       </main>

@@ -6,7 +6,10 @@ h1 {
 p {
   text-align: center;
 }
-
+nav.navbar{
+  margin-top: 0%;
+  padding-top: 0%;
+}
 .col {
   padding-bottom: 100px;
 }

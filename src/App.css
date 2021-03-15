@@ -17,6 +17,7 @@ body {
   color: black;
 }
 .Recipiente{
+  margin-top: 15px;
   width: 100%;
   text-align: center;
   float: right;
@@ -24,8 +25,8 @@ body {
 .LinkLogin{
   text-decoration: none;
   background-color: #0152cc;
-  color: #333333;
-  padding: 3px 9px 3px 9px;
+  color: #fff;
+  padding: 5px 20px 5px 20px;
   border-top: 1px solid #333333;
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
@@ -33,5 +34,5 @@ body {
   border-radius: 300px;
 }
 .LinkLogin:hover{
-  color: #000;
+  color: #ddd;
 }

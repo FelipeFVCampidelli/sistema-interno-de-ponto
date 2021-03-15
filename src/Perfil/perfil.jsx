@@ -2,31 +2,37 @@ import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table'
+import Navbar from "react-bootstrap/Navbar"
+import Nav from "react-bootstrap/Nav"
+import {Link} from "react-router-dom"
 import './perfil.css';
 
 export default function Perfil(props) {
-  const segunda = '00:00'
-  const terca = '00:00'
-  const quarta = '00:00'
-  const quinta = '00:00'
-  const sexta = '00:00'
-  const id = props.id
+  const id = props.id 
   //GET de perfil
-  const [perfil, setPerfil] = useState( {username: '', email: '', cellphoneNumber: ''} );
+  const [perfil, setPerfil] = useState( {username: '', email: '', phone: '', points: {times: [''], sum: ''}} );
   useEffect(() => {
     Axios.get(`http://localhost:4001/user/perfil/${id}`).then(res => {
       setPerfil(res.data)
     }).catch((err) => {console.error("ops! ocorreu um erro " + err.response);})
-  }, [id])//{perfil.username/.email/.cellphoneNumber}
+  }, [id])
   return (
     <div>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand><Link to="/">Home </Link></Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link><Link to="/login">Login</Link></Nav.Link>
+            <Nav.Link><Link to="/perfil">Perfil</Link></Nav.Link>
+            <Nav.Link><Link to="/ponto">Ponto</Link></Nav.Link>
+          </Nav>
+      </Navbar>
       <Container fluid>
         <Row>
           <Col>
             <h1>Página de Perfil</h1>
-              <p>Nome: {perfil.username} </p>
-              <p>Email: {perfil.email} </p>
-              <p>Telefone: {perfil.cellphoneNumber} </p>
+            <p>Nome: {perfil.username} </p>
+            <p>Email: {perfil.email} </p>
+            <p>Telefone: {perfil.phone} </p>
           </Col>
         </Row>
       </Container>
@@ -44,12 +50,12 @@ export default function Perfil(props) {
         </thead>
         <tbody>
           <tr>
-            <td>{segunda}</td>
-            <td>{terca}</td>
-            <td>{quarta}</td>
-            <td>{quinta}</td>
-            <td>{sexta}</td>
-            <td>SOMA</td>
+            <td>{perfil.points.times[0]}</td>
+            <td>{perfil.points.times[1]}</td>
+            <td>{perfil.points.times[2]}</td>
+            <td>{perfil.points.times[3]}</td>
+            <td>{perfil.points.times[4]}</td>
+            <td>{perfil.points.sum}</td>
           </tr>
         </tbody>
       </Table>

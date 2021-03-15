@@ -2,6 +2,9 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Navbar from "react-bootstrap/Navbar"
+import Nav from "react-bootstrap/Nav"
+import {Link} from "react-router-dom"
 import './cadastro.css';
 
 export default function Cadastro(props) {
@@ -9,6 +12,14 @@ export default function Cadastro(props) {
          handlePasswordCadastroChange, handleRankCadastroChange, handleSubmitCadastro} = props.formHandlersCadastro;
   return (
     <div>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand><Link to="/">Home </Link></Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link><Link to="/login">Login</Link></Nav.Link>
+            <Nav.Link><Link to="/diretor">Diretor</Link></Nav.Link>
+            <Nav.Link><Link to="/ponto">Ponto</Link></Nav.Link>
+          </Nav>
+      </Navbar>
       <Container fluid>
         <Row>
           <Col>
@@ -20,7 +31,7 @@ export default function Cadastro(props) {
               </Form.Group>
               <Form.Group controlId="formBasicPhone">
                 <Form.Label>Número de Contato</Form.Label>
-                <Form.Control type="phone" onChange={handlePhoneCadastroChange} placeholder="XXXXXXXXXX" />
+                <Form.Control type="phone" onChange={handlePhoneCadastroChange} placeholder="(XX) X XXXX-XXXX" />
               </Form.Group>
               <Form.Group controlId="formBasicUsername">
                 <Form.Label>Nome de usuário</Form.Label>

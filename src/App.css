@@ -2,6 +2,9 @@ body {
   background-color: rgb(59, 60, 97);
   color: rgb(182, 182, 182);
 }
+h1{
+  margin-top: 100px;
+}
 .navbar-brand a {
   color: #fff;
   float:right

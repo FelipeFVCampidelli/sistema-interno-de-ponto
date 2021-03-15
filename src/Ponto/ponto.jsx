@@ -82,7 +82,6 @@ export default function Ponto(props) {
         <Navbar.Brand><Link to="/">Home </Link></Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link><Link to="/login">Login</Link></Nav.Link>
-            <Nav.Link><Link to="/perfil">Perfil</Link></Nav.Link>
             <Nav.Link><Link to="/ponto">Ponto</Link></Nav.Link>
           </Nav>
       </Navbar>

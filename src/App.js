@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from "react"
 import { BrowserRouter as Router, Link, Route, Switch, Redirect } from "react-router-dom"
 import Axios from 'axios';
 
-
 import './App.css';
 import Perfil from './Perfil/perfil'
 import Diretor from './Diretor/diretor'
@@ -10,6 +9,7 @@ import Login from './Login/login'
 import Cadastro from './CRUD/cadastro'
 import Edit from './CRUD/edit'
 import Delete from './CRUD/delete'
+import Busca from './CRUD/busca'
 import Ponto from './Ponto/ponto'
 
 export default function App() {
@@ -46,7 +46,6 @@ export default function App() {
     if (login) {return <Redirect to='/perfil' ></Redirect>;}
   }
   function redirectToHome() {if (!diretor) {return <Redirect to='/'></Redirect>;}}
-  
   //////////////
   ///CADASTRO///
   //////////////
@@ -139,19 +138,17 @@ export default function App() {
     .catch((err) => { console.error("ops! ocorreu um erro" + err.response);})
   }, [])
   const [idS,setIdS] = useState()
-  const handleSelectChange = (e) => {
-    const {value} = e
+  const handleSelectChange = (event) => {
+    const {value} = event
     console.log(value)
     setIdS(value)
   }
-  const [redirectPerfil,setRedirectPerfil] = useState()
-  function handleSubmitSearch (event) {
-    event.preventDefault();
-    setRedirectPerfil(<Redirect to={{pathname:"/perfil", state: {id: idS} }}></Redirect>)
-  }
-  const formHandlersBusca = {handleSelectChange, handleSubmitSearch, options, redirectPerfil};
-
-  
+  // const [redirectBusca,setRedirectBusca] = useState()
+  // function handleSubmitSearch (event) {
+  //   event.preventDefault();
+  //   setRedirectBusca(<Redirect to={{pathname:"/busca:id", state: {id: idS} }}></Redirect>)
+  // }
+  const formHandlersBusca = {handleSelectChange, idS, options};
   return (
     <Router>
       <main>
@@ -162,8 +159,9 @@ export default function App() {
           <Route path="/cadastro">{redirectToHome()}<Cadastro formHandlersCadastro={formHandlersCadastro}></Cadastro></Route>
           <Route path="/edit">{redirectToHome()}<Edit formHandlersEdit={formHandlersEdit}></Edit></Route>
           <Route path="/delete">{redirectToHome()}<Delete formHandlersDelete={formHandlersDelete}></Delete></Route>
+          <Route path="/busca/:id">{redirectToHome()}<Busca formHandlersEdit={formHandlersBusca}></Busca></Route>
           <Route path="/perfil">{redirectToLogin()}<Perfil id={id}></Perfil></Route>
-          <Route path="/ponto"><Ponto id={id}/></Route>
+          <Route path="/ponto"><Ponto id={idS}/>{redirectToLogin()}</Route>
           <Route render={() => <h1>404: página não encontrada</h1>} />
         </Switch>
       </main>

@@ -13,7 +13,9 @@ import './diretor.css';
 export default function Perfil(props) {
   
   const id = props.id
-  const {handleSelectChange, handleSubmitSearch, options, redirectPerfil} = props.formHandlersBusca
+  let idS = props.formHandlersBusca.idS
+  console.log(idS + " idS")
+  const {handleSelectChange, handleSubmitSearch, options} = props.formHandlersBusca
   const [perfilD, setPerfilD] = useState({username: '', email: '', phone: '', users: [{username: '', points: {sum: '', times:['']}}]});
   useEffect(() => {
     Axios.get(`http://localhost:4001/user/diretor/${id}`).then(res => {setPerfilD(res.data)})
@@ -31,6 +33,10 @@ export default function Perfil(props) {
         <td>{user.points.sum}</td>
       </tr>
     )
+  }
+  const newTo = { 
+    pathname: `/busca/${idS}`, 
+    idS: idS
   }
   return (
     <div>
@@ -52,12 +58,10 @@ export default function Perfil(props) {
             <Link to="/cadastro"><Button className="verde" variant="success">Cadastrar</Button></Link>
             <Link to="/edit"><Button className="amarelo" variant="warning" type="editar">Editar</Button></Link>
             <Link to="/delete"><Button className="vermelho" variant="danger" type="excluir">Excluir</Button></Link>
-            
-            <Form className="FormDiretorP" inline onSubmit={handleSubmitSearch}>{redirectPerfil}
+            <Form className="FormDiretorP" inline onSubmit={handleSubmitSearch}>
               <Select className="FormDiretor" styles="neutral190" onChange={handleSelectChange} options={options} value={options.id}/>
-              <Button type="submit" variant="outline-light">Search</Button>
+              <Link to={newTo}><Button type="submit" variant="outline-light">Search</Button></Link>
             </Form>
-          
           </Col>
         </Row>
       </Container>

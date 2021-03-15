@@ -58,7 +58,6 @@ export default function Ponto(props) {
   //fim da implementação//
   ////////////////////////
   const id = props.id
-
   function handleSubmitStart(event){
     event.preventDefault();
     Axios.get(`http://localhost:4001/user/start/${id}`)
@@ -67,7 +66,6 @@ export default function Ponto(props) {
     }})
     .catch(function (err){console.log(err.response);})
   }
-  
   function handleSubmitStop(event){
     event.preventDefault();
     Axios.get(`http://localhost:4001/point/end/${id}`)

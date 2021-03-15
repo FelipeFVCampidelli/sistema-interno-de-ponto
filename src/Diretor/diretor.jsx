@@ -11,7 +11,6 @@ import Nav from "react-bootstrap/Nav"
 import './diretor.css';
 
 export default function Perfil(props) {
-  
   const id = props.id
   const idS = props.formHandlersBusca.idS
   const {handleSelectChange, handleSubmitSearch, options} = props.formHandlersBusca

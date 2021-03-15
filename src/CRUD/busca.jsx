@@ -7,8 +7,7 @@ import {Link, useParams} from "react-router-dom"
 import Axios from 'axios'
 import './delete.css';
 
-export default function Delete(props) {
-  
+export default function Delete() {
   const {id} = useParams()
   //GET de perfil
   const [perfil, setPerfil] = useState( {username: '', email: '', phone: '', points: {times: [''], sum: ''}} );

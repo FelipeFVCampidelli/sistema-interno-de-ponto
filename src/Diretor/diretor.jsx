@@ -38,7 +38,6 @@ export default function Perfil(props) {
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand><Link to="/">Home </Link></Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link><Link to="/login">Login</Link></Nav.Link>
             <Nav.Link><Link to="/diretor">Diretor</Link></Nav.Link>
             <Nav.Link><Link to="/ponto">Ponto</Link></Nav.Link>
           </Nav>

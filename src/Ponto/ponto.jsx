@@ -77,9 +77,9 @@ export default function Ponto(props) {
   return (
     <div>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand><Link to="/">Home </Link></Navbar.Brand>
+        <Navbar.Brand><Link to="/">Home</Link></Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link><Link to="/login">Login</Link></Nav.Link>
+            <Nav.Link><Link to="/login">Retornar</Link></Nav.Link>
             <Nav.Link><Link to="/ponto">Ponto</Link></Nav.Link>
           </Nav>
       </Navbar>

@@ -170,7 +170,7 @@ export default function App() {
           <Route path="/delete">{redirectToHome()}<Delete formHandlersDelete={formHandlersDelete}></Delete></Route>
           <Route path="/busca/:id">{redirectToHome()}<Busca formHandlersEdit={formHandlersBusca}></Busca></Route>
           <Route path="/perfil">{redirectToLogin()}<Perfil id={id}></Perfil></Route>
-          <Route path="/ponto"><Ponto id={idS}/>{redirectToLogin()}</Route>
+          <Route path="/ponto"><Ponto id={id}/>{redirectToLogin()}</Route>
           <Route render={() => <h1>404: página não encontrada</h1>} />
         </Switch>
       </main>

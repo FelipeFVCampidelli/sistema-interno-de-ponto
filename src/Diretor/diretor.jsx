@@ -13,7 +13,7 @@ import './diretor.css';
 export default function Perfil(props) {
   
   const id = props.id
-  let idS = props.formHandlersBusca.idS
+  const idS = props.formHandlersBusca.idS
   const {handleSelectChange, handleSubmitSearch, options} = props.formHandlersBusca
   const [perfilD, setPerfilD] = useState({username: '', email: '', phone: '', users: [{username: '', points: {sum: '', times:['']}}]});
   useEffect(() => {

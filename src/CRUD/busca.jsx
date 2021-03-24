@@ -7,7 +7,7 @@ import {Link, useParams} from "react-router-dom"
 import Axios from 'axios'
 import './busca.css';
 
-export default function Delete() {
+export default function Busca() {
   const {id} = useParams()
   //GET de perfil
   const [perfil, setPerfil] = useState( {username: '', email: '', phone: '', points: {times: [''], sum: ''}} );

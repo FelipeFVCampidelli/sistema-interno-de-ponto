@@ -152,6 +152,9 @@ export default function App() {
     console.log(value)
     setIdS(value)
   }
+  /////////////////////
+  ////DELETE POINTS////
+  /////////////////////
   function handleSubmitDeletePoints(event){
     event.preventDefault();
     Axios.delete('http://localhost:4001/user')
@@ -171,7 +174,7 @@ export default function App() {
           <Route path="/cadastro">{redirectToHome()}<Cadastro formHandlersCadastro={formHandlersCadastro}></Cadastro></Route>
           <Route path="/edit">{redirectToHome()}<Edit formHandlersEdit={formHandlersEdit}></Edit></Route>
           <Route path="/delete">{redirectToHome()}<Delete formHandlersDelete={formHandlersDelete}></Delete></Route>
-          <Route path="/busca/:id">{redirectToHome()}<Busca formHandlersEdit={formHandlersBusca}></Busca></Route>
+          <Route path="/busca/:id">{redirectToHome()}<Busca formHandlersBusca={formHandlersBusca}></Busca></Route>
           <Route path="/perfil">{redirectToLogin()}<Perfil id={id}></Perfil></Route>
           <Route path="/ponto"><Ponto id={id}/>{redirectToLogin()}</Route>
           <Route render={() => <h1>404: página não encontrada</h1>} />

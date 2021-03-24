@@ -30,7 +30,7 @@ export default function Edit(props) {
               <Form.Group>
                 <Form.Label>Selecione o usuário a ser editado</Form.Label>
                 <Select className="FormEdit" placeholder="Digite o nome do perfil a ser editado" styles="neutral190" 
-                        onChange={handleSelectChangeEdit} options={optionsE} value={optionsE.id}/>
+                        onChange={handleSelectChangeEdit} options={optionsE}/>
               </Form.Group>
               <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email</Form.Label>

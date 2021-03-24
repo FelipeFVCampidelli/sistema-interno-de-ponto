@@ -54,7 +54,7 @@ export default function Perfil(props) {
             <Link to="/edit"><Button className="amarelo" variant="warning" type="editar">Editar</Button></Link>
             <Link to="/delete"><Button className="vermelho" variant="danger" type="excluir">Excluir</Button></Link>
             <Form className="FormDiretorP" inline>
-              <Select className="FormDiretor" styles="neutral190" onChange={handleSelectChange} options={options} value={options.id}/>
+              <Select className="FormDiretor" styles="neutral190" onChange={handleSelectChange} options={options}/>
               <Link to={RotaDinamicaBusca}><Button type="submit" variant="outline-light">Search</Button></Link>
             </Form>
           </Col>
